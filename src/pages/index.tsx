@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography"
 
 import map_style from "../map_style"
 import "./index.css"
-import {createTheme, ThemeProvider} from "@material-ui/core"
+import { createTheme, ThemeProvider } from "@material-ui/core"
 
 
 const default_center = {
@@ -19,8 +19,8 @@ type Coord = {
     lng: number
 }
 
-const TreeIcon = (_props: { lat: number, lng: number }) => <StaticImage
-    src="../images/tree.png"
+const TreeIcon = (_props: { lat: number, lng: number }) => <img
+    src="tree.png"
     alt="tree"
     style={{
         width: 25,
@@ -67,18 +67,18 @@ const IndexPage = () => {
                         }}
                         defaultCenter={default_center}
                         defaultZoom={10}
-                        onClick={({lat, lng}) => {
-                            set_trees(trees.concat([{lat, lng}]))
+                        onClick={({ lat, lng }) => {
+                            set_trees(trees.concat([{ lat, lng }]))
                         }}
                     >
-                        {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng}/>)}
+                        {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng} />)}
                     </GoogleMapReact>
                 </div>
             </Grid>
             <Grid item xs={4}>
                 <Typography variant="h1">All-Natural Air Conditioning</Typography>
-                <Typography style={{marginTop: "2em"}} variant="body1">
-                    
+                <Typography style={{ marginTop: "2em" }} variant="body1">
+
                 </Typography>
             </Grid>
         </Grid>

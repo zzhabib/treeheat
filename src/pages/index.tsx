@@ -47,14 +47,17 @@ const IndexPage = () => {
     return <ThemeProvider theme={theme}>
         <Grid container
             style={{
-                paddingTop: "8em"
+                paddingTop: "8em",
+                paddingLeft: "4em",
+                paddingRight: "4em",
+                maxWidth: "100%"
             }}
+            spacing={8}
         >
             <Grid item xs={8}>
                 <div style={{
-                    width: "80%",
+                    width: "100%",
                     height: 600,
-                    margin: "0 auto",
                     boxShadow: "5px 10px 20px rgba(128, 128, 128, 0.5)"
                 }}>
                     <GoogleMapReact
@@ -78,8 +81,20 @@ const IndexPage = () => {
             <Grid item xs={4}>
                 <Typography variant="h1">All-Natural Air Conditioning</Typography>
                 <Typography style={{marginTop: "2em"}} variant="body1">
-                    
+                    When we think of trees, we think of tall plants that make the landscape prettier,
+                    the water cleaner, and the planet healthier. What often goes unnoticed is the critical
+                    relationship between the prevalence of vegetation and the temperature of the air surrounding
+                    it.
                 </Typography>
+                <Typography style={{marginTop: "2em"}} variant="body1">
+                    Use the interactive map to the left to see for yourself the transformative impact
+                    trees have on the community. As you add add more trees by clicking on the map, you will
+                    notice the temperature of the surrounding area decreasing. In scorching hot Arizona,
+                    this makes planting trees an incredibly useful tool in keeping ourselves comfortable.
+                </Typography>
+            </Grid>
+            <Grid item xs={6}>
+                <Typography variant="h1">Why it works</Typography>
             </Grid>
         </Grid>
     </ThemeProvider>

@@ -2,7 +2,6 @@ import * as React from "react"
 
 const style = {
     margin: "auto",
-    width: "50%"
 }
 
 const AboutDetails = () => {

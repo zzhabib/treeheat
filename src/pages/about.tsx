@@ -4,7 +4,7 @@ import Navbar from "../components/navbar"
 
 const About = () => {
     return (
-        <div>
+        <div style={{maxWidth: "50%", margin: "auto"}}>
             <Navbar />
             <AboutDetails />
         </div>

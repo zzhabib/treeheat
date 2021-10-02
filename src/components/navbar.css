@@ -1,0 +1,14 @@
+.topnav {
+    background-color: gray
+}
+
+.topnav a {
+    float: left
+}
+
+.navbar{
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

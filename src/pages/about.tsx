@@ -1,10 +1,12 @@
 import * as React from "react"
+import AboutDetails from "../components/aboutdetails"
+import Navbar from "../components/navbar"
 
 const About = () => {
     return (
         <div>
-            <h1>About</h1>
-            <p></p>
+            <Navbar />
+            <AboutDetails />
         </div>
     )
 }

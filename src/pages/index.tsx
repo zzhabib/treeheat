@@ -52,6 +52,7 @@ const IndexPage = () => {
                 paddingTop: "8em",
                 paddingLeft: "4em",
                 paddingRight: "4em",
+                paddingBottom: "8em",
                 maxWidth: "100%"
             }}
             spacing={8}
@@ -98,19 +99,25 @@ const IndexPage = () => {
             </Grid>
             <Grid item xs={6}>
                 <Typography variant="h1">How to get involved</Typography>
-                <Typography style={{marginTop: "2em"}} variant="body1">
+                <Typography style={{ marginTop: "2em" }} variant="body1">
                     Thankfully for us, there are a number of wonderful organizations focused around the
                     preservation and growth of urban forests around Phoenix. One of the most prominent is the
                     Arizona Community Tree Council, a non-profit organization dedicated to the proper care and
                     and planting of Arizona trees.
                 </Typography>
-                <Typography style={{marginTop: "2em"}} variant="body1">
+                <Typography style={{ marginTop: "2em" }} variant="body1">
                     Another important project is the Phoenix City Government's Tree Bank. When you donate, your
                     contribution goes towards adding trees along high impact areas like schools and neighborhoods.
                 </Typography>
+                <a href="https://www.phoenix.gov/sustainability/plantatree">
+                    <button>Donate</button>
+                </a>
             </Grid>
             <Grid item xs={6}>
                 <StaticImage src={"../images/urbantrees.jpg"} alt="urbantrees.jpg" />
+            </Grid>
+            <Grid item xs={4}>
+                <Typography variant="h1">Why it works</Typography>
             </Grid>
         </Grid>
     </ThemeProvider>

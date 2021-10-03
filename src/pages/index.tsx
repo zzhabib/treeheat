@@ -8,17 +8,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import map_style from "../map_style"
 import "./index.css"
 import { createTheme, ThemeProvider } from "@material-ui/core"
+import { default_center, get_region_of_map } from "../heatmap"
+import type { Coord } from "../heatmap"
 
 
-const default_center = {
-    lat: 33.4514862300583,
-    lng: -111.99728369495931
-}
-
-type Coord = {
-    lat: number
-    lng: number
-}
 
 const TreeIcon = (_props: { lat: number, lng: number }) => <img
     src="tree.png"
@@ -44,7 +37,9 @@ const theme = createTheme({
 
 const IndexPage = () => {
     const [trees, set_trees] = useState<Coord[]>([])
-
+    const coords = get_region_of_map(default_center, 10, .001, .001)
+    const coords2 = get_region_of_map({lat: default_center.lat + .1, lng: default_center.lng + .1}, 10, .001, .001)
+    console.log(coords)
     return <ThemeProvider theme={theme}>
         <Helmet title="tree_heat" />
         <Grid container
@@ -75,6 +70,8 @@ const IndexPage = () => {
                         onClick={({ lat, lng }) => {
                             set_trees(trees.concat([{ lat, lng }]))
                         }}
+                        heatmapLibrary
+                        heatmap={{positions: coords.concat(coords2), options: {radius: 20}}}
                     >
                         {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng} />)}
                     </GoogleMapReact>

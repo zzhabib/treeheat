@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import map_style from "../map_style"
 import "./index.css"
-import { createTheme, ThemeProvider } from "@material-ui/core"
+import { Button, createTheme, ThemeProvider } from "@material-ui/core"
 import { default_center, get_region_of_map } from "../heatmap"
 import type { Coord } from "../heatmap"
 
@@ -32,14 +32,19 @@ const theme = createTheme({
             fontFamily: "lato",
             fontSize: "16px"
         }
+    },
+    overrides: {
+        MuiButton: {
+            contained: {
+                backgroundColor: "#FF8811"
+            },
+
+        }
     }
 })
 
 const IndexPage = () => {
     const [trees, set_trees] = useState<Coord[]>([])
-    const coords = get_region_of_map(default_center, 10, .001, .001)
-    const coords2 = get_region_of_map({lat: default_center.lat + .1, lng: default_center.lng + .1}, 10, .001, .001)
-    console.log(coords)
     return <ThemeProvider theme={theme}>
         <Helmet title="tree_heat" />
         <Grid container
@@ -50,9 +55,9 @@ const IndexPage = () => {
                 paddingBottom: "8em",
                 maxWidth: "100%",
             }}
-            spacing={8}
+            spacing={10}
         >
-            <Grid item xs={8}>
+            <Grid item xs={7}>
                 <div style={{
                     width: "100%",
                     height: 600,
@@ -62,6 +67,7 @@ const IndexPage = () => {
                         options={{
                             minZoom: 12,
                             styles: map_style,
+                            
                         }}
                         bootstrapURLKeys={{
                             key: process.env.GOOGLE_MAPS_KEY as string
@@ -72,25 +78,14 @@ const IndexPage = () => {
                             set_trees(trees.concat([{ lat, lng }]))
                         }}
                         heatmapLibrary
-                        heatmap={{positions: coords.concat(coords2), options: {radius: 20}}}
+                        heatmap={{positions: trees, options: {radius: 20}}}
                     >
                         {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng} />)}
                     </GoogleMapReact>
                 </div>
             </Grid>
-            <Grid item xs={4}>
-                <Typography variant="h1">Tree Heat</Typography>
-                <Typography style={{ marginTop: "2em" }} variant="body1">
-                    <ul>
-                        <li>Click anywhere on the map to add a tree.</li>
-                        <li>The overlay on the map represents real-world air temperature.</li>
-                        <li>As trees are added, notice how they affect the temperature around them.</li>
-                    </ul>
-                </Typography>
-            </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
                 <Typography variant="h1">All-Natural Air Conditioning</Typography>
-
                 <Typography style={{ marginTop: "2em" }} variant="body1">
                     When we think of trees, we think of tall plants that make the landscape prettier,
                     the water cleaner, and the planet healthier. What often goes unnoticed is the critical
@@ -104,14 +99,21 @@ const IndexPage = () => {
                     this makes planting trees an incredibly useful tool in keeping ourselves comfortable.
                 </Typography>
             </Grid>
+            <Grid item xs={12} style={{marginTop: "4em"}}></Grid>
             <Grid item xs={6}>
-                <StaticImage src={"../images/urbantrees.jpg"} alt="urbantrees.jpg" />
+                <Typography variant="h1">Why trees?</Typography>
+                <Typography style={{ marginTop: "2em" }} variant="body1">
+                </Typography>
+            </Grid>
+            <Grid item xs={6}>
+                <StaticImage style={{ width: "70%" }} src="../images/urbantrees.jpg" alt="urbantrees.jpg" />
             </Grid>
             <Grid item xs={6}>
                 <StaticImage
-                    src={"../images/az-community-tree-council.png"}
+                    src="../images/az-community-tree-council.png"
                     style={{ width: "60%" }}
-                    alt="Arizona Community Tree Council Logo" />
+                    alt="Arizona Community Tree Council Logo"
+                />
             </Grid>
             <Grid item xs={6}>
                 <Typography variant="h1">How to get involved</Typography>
@@ -121,16 +123,12 @@ const IndexPage = () => {
                     Arizona Community Tree Council, a non-profit organization dedicated to the proper care and
                     and planting of Arizona trees.
                 </Typography>
+                <Button variant="contained" style={{marginTop: "2em"}} href="https://www.aztrees.org/">Learn More</Button>
                 <Typography style={{ marginTop: "2em" }} variant="body1">
                     Another important project is the Phoenix City Government's Tree Bank. When you donate, your
                     contribution goes towards adding trees along high impact areas like schools and neighborhoods.
                 </Typography>
-                <a href="https://www.phoenix.gov/sustainability/plantatree">
-                    <button>Donate</button>
-                </a>
-            </Grid>
-            <Grid item xs={4}>
-                <Typography variant="h1">Why it works</Typography>
+                <Button variant="contained" style={{marginTop: "2em"}} href="https://www.phoenix.gov/sustainability/plantatree">Learn More</Button>
             </Grid>
         </Grid>
     </ThemeProvider>

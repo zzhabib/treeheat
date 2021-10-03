@@ -24,7 +24,7 @@ const TreeIcon = (_props: { lat: number, lng: number }) => <img
     alt="tree"
     style={{
         width: 25,
-        translate: "-50% -50%",
+        transform: 'translate(-50%, -50%)'
     }}
 />
 

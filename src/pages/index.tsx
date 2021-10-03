@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import map_style from "../map_style"
 import "./index.css"
-import {createTheme, ThemeProvider} from "@material-ui/core"
+import { createTheme, ThemeProvider } from "@material-ui/core"
 
 
 const default_center = {
@@ -20,12 +20,12 @@ type Coord = {
     lng: number
 }
 
-const TreeIcon = (_props: { lat: number, lng: number }) => <StaticImage
-    src="../images/tree.png"
+const TreeIcon = (_props: { lat: number, lng: number }) => <img
+    src="tree.png"
     alt="tree"
     style={{
         width: 25,
-        translate: "-50% -50%",
+        transform: 'translate(-50%, -50%)'
     }}
 />
 
@@ -72,23 +72,24 @@ const IndexPage = () => {
                         }}
                         defaultCenter={default_center}
                         defaultZoom={10}
-                        onClick={({lat, lng}) => {
-                            set_trees(trees.concat([{lat, lng}]))
+                        onClick={({ lat, lng }) => {
+                            set_trees(trees.concat([{ lat, lng }]))
                         }}
                     >
-                        {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng}/>)}
+                        {trees.map((tree, idx) => <TreeIcon key={idx} lat={tree.lat} lng={tree.lng} />)}
                     </GoogleMapReact>
                 </div>
             </Grid>
             <Grid item xs={4}>
                 <Typography variant="h1">All-Natural Air Conditioning</Typography>
-                <Typography style={{marginTop: "2em"}} variant="body1">
+
+                <Typography style={{ marginTop: "2em" }} variant="body1">
                     When we think of trees, we think of tall plants that make the landscape prettier,
                     the water cleaner, and the planet healthier. What often goes unnoticed is the critical
                     relationship between the prevalence of vegetation and the temperature of the air surrounding
                     it.
                 </Typography>
-                <Typography style={{marginTop: "2em"}} variant="body1">
+                <Typography style={{ marginTop: "2em" }} variant="body1">
                     Use the interactive map to the left to see for yourself the transformative impact
                     trees have on the community. As you add add more trees by clicking on the map, you will
                     notice the temperature of the surrounding area decreasing. In scorching hot Arizona,

@@ -53,7 +53,7 @@ const IndexPage = () => {
                 paddingLeft: "4em",
                 paddingRight: "4em",
                 paddingBottom: "8em",
-                maxWidth: "100%"
+                maxWidth: "100%",
             }}
             spacing={8}
         >
@@ -82,6 +82,16 @@ const IndexPage = () => {
                 </div>
             </Grid>
             <Grid item xs={4}>
+                <Typography variant="h1">Tree Heat</Typography>
+                <Typography style={{ marginTop: "2em" }} variant="body1">
+                    <ul>
+                        <li>Click anywhere on the map to add a tree.</li>
+                        <li>The overlay on the map represents real-world air temperature.</li>
+                        <li>As trees are added, notice how they affect the temperature around them.</li>
+                    </ul>
+                </Typography>
+            </Grid>
+            <Grid item xs={6}>
                 <Typography variant="h1">All-Natural Air Conditioning</Typography>
 
                 <Typography style={{ marginTop: "2em" }} variant="body1">
@@ -98,6 +108,15 @@ const IndexPage = () => {
                 </Typography>
             </Grid>
             <Grid item xs={6}>
+                <StaticImage src={"../images/urbantrees.jpg"} alt="urbantrees.jpg" />
+            </Grid>
+            <Grid item xs={6}>
+                <StaticImage
+                    src={"../images/az-community-tree-council.png"}
+                    style={{ width: "60%" }}
+                    alt="Arizona Community Tree Council Logo" />
+            </Grid>
+            <Grid item xs={6}>
                 <Typography variant="h1">How to get involved</Typography>
                 <Typography style={{ marginTop: "2em" }} variant="body1">
                     Thankfully for us, there are a number of wonderful organizations focused around the
@@ -112,9 +131,6 @@ const IndexPage = () => {
                 <a href="https://www.phoenix.gov/sustainability/plantatree">
                     <button>Donate</button>
                 </a>
-            </Grid>
-            <Grid item xs={6}>
-                <StaticImage src={"../images/urbantrees.jpg"} alt="urbantrees.jpg" />
             </Grid>
             <Grid item xs={4}>
                 <Typography variant="h1">Why it works</Typography>

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import GoogleMapReact from "google-map-react"
-import { StaticImage } from "gatsby-plugin-image"
 import Grid from "@material-ui/core/Grid/"
 import Typography from "@material-ui/core/Typography"
+import Helmet from "react-helmet"
+import { StaticImage } from "gatsby-plugin-image"
 
 import map_style from "../map_style"
 import "./index.css"
@@ -45,6 +46,7 @@ const IndexPage = () => {
     const [trees, set_trees] = useState<Coord[]>([])
 
     return <ThemeProvider theme={theme}>
+        <Helmet title="tree_heat" />
         <Grid container
             style={{
                 paddingTop: "8em",
@@ -94,7 +96,20 @@ const IndexPage = () => {
                 </Typography>
             </Grid>
             <Grid item xs={6}>
-                <Typography variant="h1">Why it works</Typography>
+                <Typography variant="h1">How to get involved</Typography>
+                <Typography style={{marginTop: "2em"}} variant="body1">
+                    Thankfully for us, there are a number of wonderful organizations focused around the
+                    preservation and growth of urban forests around Phoenix. One of the most prominent is the
+                    Arizona Community Tree Council, a non-profit organization dedicated to the proper care and
+                    and planting of Arizona trees.
+                </Typography>
+                <Typography style={{marginTop: "2em"}} variant="body1">
+                    Another important project is the Phoenix City Government's Tree Bank. When you donate, your
+                    contribution goes towards adding trees along high impact areas like schools and neighborhoods.
+                </Typography>
+            </Grid>
+            <Grid item xs={6}>
+                <StaticImage src={"../images/urbantrees.jpg"} alt="urbantrees.jpg" />
             </Grid>
         </Grid>
     </ThemeProvider>
